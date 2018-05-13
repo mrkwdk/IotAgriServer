@@ -1,0 +1,28 @@
+version: "2"
+services:
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - 27017:27017
+    command:
+      - mongod
+  backend:
+    build: "backend"
+    environment:
+      - NODE_ENV=production
+      - MONGO_DATABASE=mongodb://mongodb/myapp
+    ports:
+      - "3000:3000"
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+  nginx:
+    build: "nginx"
+    ports:
+      - "80:80"
+    volumes:
+      - ./front/build:/app:ro
