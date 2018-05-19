@@ -11,15 +11,16 @@ const Image = mongoose.model('Image', {
   }
 });
 
-const Todo = mongoose.model('Todo', {
-  title: {
-    type: String,
-    default: "", 
-  },  
-  done: {
-    type: Boolean,
-    default: false
+const SoilHumidty = mongoose.model('SoilHumidty', {
+  value: {
+    type: Number,
+    default: 0,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   }
 });
 
-module.exports = { Todo: Todo, Image: Image, SoilHumidty: SoilHumidty }
+module.exports = { SoilHumidty: SoilHumidty }
+//module.exports = { Image: Image, SoilHumidty: SoilHumidty }

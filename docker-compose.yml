@@ -13,7 +13,7 @@ services:
     build: "backend"
     environment:
       - NODE_ENV=production
-      - MONGO_DATABASE=mongodb://mongodb/myapp
+      - MONGO_DATABASE=mongodb://mongodb/iot_test
     ports:
       - "3000:3000"
     links:
